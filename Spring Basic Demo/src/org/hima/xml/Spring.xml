@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+
+	<bean id="helloword" class="org.hima.springframework.HelloWord">
+	</bean>
+
+	<bean id="beanscope" class="org.hima.springframework.BeanScope"
+		scope="prototype"></bean>
+
+	<bean id="creditcard" class="org.hima.springframework.CreditCard">
+		<!-- init-method="init" destroy-method="destroy"> -->
+		<property name="cardNo" value="Card Number method yet to decide !" />
+	</bean>
+
+	<bean id="bankdetails" class="org.hima.springframework.BankDetails">
+		<property name="bankName" value="Barclay"></property>
+		<property name="bankID" value="Barclay1234"></property>
+		<property name="bankAddress" value="abc"></property>
+
+	</bean>
+
+	<bean id="customer" class="org.hima.springframework.Customer"
+		parent="bankdetails">
+		<property name="name" value="Alexa"></property>
+		<property name="phoneNumber" value="1245"></property>
+	</bean>
+
+	<!-- Definition for textEditor bean -->
+	<bean id="textEditor" class="org.hima.springframework.TextEditor"
+		lazy-init="true">
+		  <!--   <constructor-arg ref="spellChecker" /> -->
+		 <!--   <property name="spellChecker" ref="spellChecker" />-->
+	</bean>
+
+	<!-- Definition for spellChecker bean -->
+	<bean id="spellChecker" class="org.hima.springframework.SpellChecker"
+		lazy-init="true"></bean>
+		
+		<!-- Definition for spellChecker bean -->
+	<bean id="numberCheck" class="org.hima.springframework.NumberCheck"
+		lazy-init="true"></bean>
+
+	<!-- once This is the configured u can start annotating -->
+	<context:annotation-config />
+
+	<!-- Definition for student bean -->
+	<bean id="student" class="org.hima.springframework.Student">
+		<property name="name" value="Zara" />
+
+		<!-- try without passing age and check the result -->
+		  <property name="age" value="11" /> 
+
+
+	</bean>
+
+	<!-- Definition for profile bean -->
+	<bean id="profile" class="org.hima.springframework.Profile" lazy-init="true"></bean>
+
+	<!-- Definition for student1 bean -->
+	<bean id="student1" class="org.hima.springframework.Student">
+		<property name="name" value="Zara" />
+		<property name="age" value="11" />
+	</bean>
+
+	<!-- Definition for student2 bean -->
+	<bean id="student2" class="org.hima.springframework.Student">
+		<property name="name" value="Nuha" />
+		<property name="age" value="2" />
+	</bean>
+</beans>
