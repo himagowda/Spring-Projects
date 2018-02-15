@@ -1,5 +1,6 @@
 package org.hima.springframework;
 
+import org.hima.springframework.aop.service.ShapeService;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,7 +15,7 @@ public class MainApp {
 
 		/* Bean Scope */
 		BeanScope type1 = (BeanScope) context.getBean("beanscope");
-		type1.setMessage("Hey there This is Bean type example"+"\n");
+		type1.setMessage("Hey there This is Bean type example" + "\n");
 		type1.getMessage();
 
 		BeanScope type2 = (BeanScope) context.getBean("beanscope");
@@ -40,17 +41,36 @@ public class MainApp {
 		/* Dependency Injection (constructor based ) */
 		TextEditor te = (TextEditor) context.getBean("textEditor");
 		te.spellCheck();
-	   te.readCount();
+		te.readCount();
 
 		/* Annotations */
 
 		Student student = (Student) context.getBean("student");
 		System.out.println("Name : " + student.getName());
-		System.out.println("Age : " + student.getAge()+"\n");
+		System.out.println("Age : " + student.getAge() + "\n");
 
 		Profile profile = (Profile) context.getBean("profile");
 		profile.printAge();
 		profile.printName();
+
+		/* AOP */
+
+		/*
+		 * ShapeService shapeService = context.getBean("shapeservice",
+		 * ShapeService.class); System.out.println("\n");
+		 * //shapeService.getCircle().setName("Any name"); /*comment it to show
+		 * after AOP change to triangle class to show it works with triangle
+		 * 
+		 */
+		// System.out.println(shapeService.getTriangle().getName());
+		// System.out.println(shapeService.getCircle().setNameAndReturn("Any
+		// name"));
+
+		Student stu = (Student) context.getBean("student");
+		stu.getName();
+		stu.getAge();
+
+		stu.printThrowException();
 
 	}
 }
