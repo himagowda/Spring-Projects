@@ -66,11 +66,11 @@ public class MainApp {
 		// System.out.println(shapeService.getCircle().setNameAndReturn("Any
 		// name"));
 
-		Student stu = (Student) context.getBean("student");
+		/*Student stu = (Student) context.getBean("student");
 		stu.getName();
 		stu.getAge();
 
-		stu.printThrowException();
+		stu.printThrowException();*/
 
 	}
 }
