@@ -17,7 +17,9 @@ public class HelloWordController {
 
 	@RequestMapping(value = "/hi", method = RequestMethod.GET)
 	public String hi(@RequestParam("name") String name, Model model) {
-		String message = "Hi " + name + "!";
+		System.out.println("inside hi method");
+		//String message = "Hi " + name + "!";
+		String message = "Hello this is Spring MVC on Openshift";
 		model.addAttribute("message", message);
 		return "hi";
 	}
